@@ -3,6 +3,7 @@ package main
 import (
 	redis "github.com/docker/go-redis-server"
 	"github.com/phpor/go-redis-proxy/handler"
+	"fmt"
 )
 
 func main() {
@@ -13,7 +14,9 @@ func main() {
 	server, err := redis.NewServer(conf)
 	if err != nil {
 		print(err)
+		print("abcd")
 		return
 	}
-	server.ListenAndServe()
+	err = server.ListenAndServe()
+	fmt.Print(err)
 }
